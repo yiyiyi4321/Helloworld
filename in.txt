@@ -1,15 +1,15 @@
-The community has already taken significant steps in this
-direction, with convolutional neural nets (CNNs) becoming
-the common workhorse behind a wide variety of image prediction problems. CNNs learn to minimize a loss function –
-an objective that scores the quality of results – and although
-the learning process is automatic, a lot of manual effort still
-goes into designing effective losses. In other words, we still
-have to tell the CNN what we wish it to minimize. But,
-just like Midas, we must be careful what we wish for! If
-we take a naive approach, and ask the CNN to minimize
-Euclidean distance between predicted and ground truth pixels, it will tend to produce blurry results [29, 46]. This is
-because Euclidean distance is minimized by averaging all
-plausible outputs, which causes blurring. Coming up with
-loss functions that force the CNN to do what we really want
-– e.g., output sharp, realistic images – is an open problem
-and generally requires expert knowledge.
+Conditional GANs We are not the first to apply GANs
+in the conditional setting. Previous works have conditioned
+GANs on discrete labels [28], text [32], and, indeed, images. The image-conditional models have tackled inpainting [29], image prediction from a normal map [39], image
+manipulation guided by user constraints [49], future frame
+prediction [27], future state prediction [48], product photo
+generation [43], and style transfer [25]. Each of these methods was tailored for a specific application. Our framework
+differs in that nothing is application-specific. This makes
+our setup considerably simpler than most others.
+Our method also differs from these prior works in several architectural choices for the generator and discriminator. Unlike past work, for our generator we use a “U-Net”-
+based architecture [34], and for our discriminator we use a
+convolutional “PatchGAN” classifier, which only penalizes
+structure at the scale of image patches. A similar PatchGAN architecture was previously proposed in [25], for the
+purpose of capturing local style statistics. Here we show
+that this approach is effective on a wider range of problems,
+and we investigate the effect of changing the patch size.
